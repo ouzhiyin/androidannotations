@@ -245,6 +245,14 @@ body{
 	        box-shadow:0 0px 2px 2px #444;
 }
 
+#header-container header div{
+    float:right;
+    height:111px;
+    background:red; 
+    width:200px;
+    background-color:#B5DB3B;
+}
+
 h2, h3{margin:30px 0;}
 h2{font-size: 40px;}
 h3{font-size: 30px;}
