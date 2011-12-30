@@ -88,6 +88,7 @@
 
 	<modules>
 		<module>androidannotations</module>
+		<module>androidannotations-aspectj</module>
 		<module>functional-test-1-5</module>
 		<module>rest-api-test-1-5</module>
 	</modules>
