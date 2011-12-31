@@ -295,9 +295,10 @@ public class AndroidAnnotationProcessor extends AnnotatedAbstractProcessor {
 
 		AnnotationElements validatedModel = validateAnnotations(extractedModel, rClass, androidSystemServices, androidManifest);
 
-		JCodeModel codeModel = processAnnotations(validatedModel, rClass, androidSystemServices, androidManifest);
+		// TODO This is temporary
+//		JCodeModel codeModel = processAnnotations(validatedModel, rClass, androidSystemServices, androidManifest);
 
-		generateSources(codeModel);
+//		generateSources(codeModel);
 	}
 
 	private boolean nothingToDo(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
