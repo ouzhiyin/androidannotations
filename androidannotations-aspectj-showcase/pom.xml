@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.googlecode.androidannotations.aspectj.showcase</groupId>
+	<artifactId>androidannotations-aspectj-showcase</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>apk</packaging>
+
+	<name>Androidannotations with AspectJ Showcase</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+		<android.sdk.version>1.6_r2</android.sdk.version>
+		<androidannotations.version>2.3-SNAPSHOT</androidannotations.version>
+		<android-maven-plugin.version>3.0.0</android-maven-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${android.sdk.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.androidannotations</groupId>
+			<artifactId>androidannotations-aspectj</artifactId>
+			<version>${androidannotations.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.androidannotations</groupId>
+			<artifactId>androidannotations-aspectj</artifactId>
+			<classifier>api</classifier>
+			<version>${androidannotations.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<pluginManagement>
+
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>${android-maven-plugin.version}</version>
+					<extensions>true</extensions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<!-- This is temporary. We will be able to remove it when the m2e connector 
+					is updated. (proguard is a brand new goal in android-maven-plugin) -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.jayway.maven.plugins.android.generation2
+										</groupId>
+										<artifactId>
+											android-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.0.0,)
+										</versionRange>
+										<goals>
+											<goal>proguard</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<configuration>
+					<proguard></proguard>
+					<sdk>
+						<platform>4</platform>
+					</sdk>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
