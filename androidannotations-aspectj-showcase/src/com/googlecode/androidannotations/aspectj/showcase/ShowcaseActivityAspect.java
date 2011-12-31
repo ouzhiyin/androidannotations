@@ -11,15 +11,8 @@ import android.util.Log;
 
 @Aspect
 public class ShowcaseActivityAspect {
-
-	// This is a very very basic aspect to show what can be done with an aspect
-	// You can see that we can very easily bind to anything we want on the
-	// activity
-	// because we know its exact name.
-
-	// This kind of aspect is meant to be generated.
-
-	// Once generated, it will do the exact thing we need it to do.
+	
+	// Currently useless aspect
 
 	@Pointcut("call(* com.googlecode.androidannotations.aspectj.showcase.ShowcaseActivity.*(..)) && target(activ)")
 	public void basicPointCut(Activity activ) {
